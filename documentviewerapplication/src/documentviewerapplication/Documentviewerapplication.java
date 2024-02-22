@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package documentviewerapplication;
-
+import java.util.Scanner;
 /**
  *
  * @author Viranga
@@ -189,16 +189,9 @@ class DoublyLinkedList {
         current = head;
     }
     
-    
-    
-    
+  
     
 }
-
-
-
-
-
 
 
 public class Documentviewerapplication {
@@ -207,7 +200,88 @@ public class Documentviewerapplication {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+       DoublyLinkedList document = new DoublyLinkedList();
+    Scanner scanner = new Scanner(System.in);
+
+    while (true) {
+        System.out.println("\nDocument Viewer Menu:");
+        System.out.println("1. Add Page");
+        System.out.println("2. Add Page at Index");
+        System.out.println("3. Remove Page");
+        System.out.println("4. Go to Next Page");
+        System.out.println("5. Go to Previous Page");
+        System.out.println("6. Go to First Page");
+        System.out.println("7. Go to Last Page");
+        System.out.println("8. Display All Pages");
+        System.out.println("9. Edit Current Page Content");
+        System.out.println("10. Exit");
+
+        System.out.print("Enter your choice: ");
+        int choice = scanner.nextInt();
+
+        switch (choice) {
+            case 1:
+                scanner.nextLine(); // Consume the newline character
+                System.out.print("Enter page content: ");
+                String content = scanner.nextLine();
+                document.addPage(content);
+                break;
+
+            case 2:
+                scanner.nextLine(); // Consume the newline character
+                System.out.print("Enter page content: ");
+                String contentAtIndex = scanner.nextLine();
+                System.out.print("Enter index to add page: ");
+                int indexToAdd = scanner.nextInt();
+                document.addPageAtIndex(contentAtIndex, indexToAdd);
+                break;
+
+            case 3:
+                System.out.print("Enter page number to remove: ");
+                int pageNumberToRemove = scanner.nextInt();
+                document.removePage(pageNumberToRemove);
+                break;
+
+            case 4:
+                document.goToNextPage();
+                break;
+
+            case 5:
+                document.goToPreviousPage();
+                break;
+
+            case 6:
+                document.goToFirstPage();
+                break;
+
+            case 7:
+                document.goToLastPage();
+                break;
+
+            case 8:
+                document.displayAllPages();
+                break;
+
+             case 9:
+    System.out.print("Enter page number to edit: ");
+    int pageToEdit = scanner.nextInt();
+    scanner.nextLine(); // Consume the newline character
+    System.out.print("Enter new content for page " + pageToEdit + ": ");
+    String newContent = scanner.nextLine();
+    document.editPageContent(pageToEdit, newContent);
+    break;
+
+
+            case 10:
+                System.out.println("Exiting Document Viewer. Goodbye!");
+                System.exit(0);
+
+            default:
+                System.out.println("Invalid choice. Please enter a valid option.");
+        }
+
+        System.out.println("Current Page: " + document.getCurrentPageContent());
+    }
     }
     
 }
