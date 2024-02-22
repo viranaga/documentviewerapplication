@@ -100,6 +100,61 @@ class DoublyLinkedList {
         }
  
    }
+    private Node findNodeByPageNumber(int pageNumber) {
+        Node currentNode = head;
+        int currentPageNumber = 1;
+
+        while (currentNode != null && currentPageNumber < pageNumber) {
+            currentNode = currentNode.next;
+            currentPageNumber++;
+        }
+
+        return currentNode;
+    }
+
+    public void goToNextPage() {
+        if (current != null && current.next != null) {
+            current = current.next;
+        } else {
+            System.out.println("No next page available.");
+        }
+    }
+
+    public void goToPreviousPage() {
+        if (current != null && current.prev != null) {
+            current = current.prev;
+        } else {
+            System.out.println("No previous page available.");
+        }
+    }
+
+
+
+
+    public void goToFirstPage() {
+        current = head;
+    }
+
+    public void goToLastPage() {
+        current = tail;
+    }
+
+    public String getCurrentPageContent() {
+        return (current != null) ? current.content : "No page available.";
+    }
+
+    public void displayAllPages() {
+        Node currentNode = head;
+
+        while (currentNode != null) {
+            System.out.println("Page Content: " + currentNode.content);
+            currentNode = currentNode.next;
+        }
+
+
+        // Reset the current node to the head
+        current = head;
+    }
     
     
     
