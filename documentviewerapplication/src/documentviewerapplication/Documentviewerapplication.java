@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+ 
 package documentviewerapplication;
 import java.util.Scanner;
-/**
- *
- * @author Viranga
- */
+ 
 class Node {
     String content;
     Node prev;
@@ -196,9 +190,7 @@ class DoublyLinkedList {
 
 public class Documentviewerapplication {
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String[] args) {
        DoublyLinkedList document = new DoublyLinkedList();
     Scanner scanner = new Scanner(System.in);
