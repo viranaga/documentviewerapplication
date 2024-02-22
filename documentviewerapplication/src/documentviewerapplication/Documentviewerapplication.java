@@ -100,6 +100,39 @@ class DoublyLinkedList {
         }
  
    }
+        public void removePage(int pageNumber) {
+        Node nodeToRemove = findNodeByPageNumber(pageNumber);
+
+        if (nodeToRemove != null) {
+            Node prevNode = nodeToRemove.prev;
+            Node nextNode = nodeToRemove.next;
+
+            if (prevNode != null) {
+                prevNode.next = nextNode;
+            } else {
+                head = nextNode;
+            }
+
+            if (nextNode != null) {
+                nextNode.prev = prevNode;
+            } else {
+                tail = prevNode;
+            }
+
+            if (current == nodeToRemove) {
+                current = nextNode; // Move to the next page after removal
+            }
+        }
+    }
+    public void editPageContent(int pageNumber, String newContent) {
+    Node targetPage = findNodeByPageNumber(pageNumber);
+
+    if (targetPage != null) {
+        targetPage.content = newContent;
+    } else {
+        System.out.println("Invalid page number. Page not found.");
+    }
+}
     private Node findNodeByPageNumber(int pageNumber) {
         Node currentNode = head;
         int currentPageNumber = 1;
